@@ -1,6 +1,6 @@
 """
 leetcode.com/problem-list/string/
-url: https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/description/
+url: https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses
 """
 
 
