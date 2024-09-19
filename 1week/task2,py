@@ -1,0 +1,26 @@
+"""
+leetcode.com/problem-list/string/
+url: https://leetcode.com/problems/longest-valid-parentheses/description
+"""
+
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        trace = [0] * len(s)
+        stack = []
+        for i, ch in enumerate(s):
+            if ch == "(":
+                stack.append(i)
+            elif ch == ")" and len(stack) > 0:
+                trace[stack.pop()] = 1
+                trace[i] = 1
+
+        max_len = cur_len = 0
+        for i in range(len(trace)):
+            if trace[i] == 1:
+                cur_len += 1
+            else:
+                max_len = max(max_len, cur_len)
+                cur_len = 0
+        max_len = max(max_len, cur_len)
+        return max_len
