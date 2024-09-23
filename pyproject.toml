@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pythoncourseproject"
+version = "0.1.0"
+description = "Solutions for LeetCode tasks within the HSE python course"
+authors = ["Shon Qwezon <shonzbso@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 99
+
+[tool.isort]
+profile = "black"

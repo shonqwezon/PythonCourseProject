@@ -3,6 +3,8 @@ leetcode.com/problem-list/string/
 url: https://leetcode.com/problems/minimum-window-substring
 """
 
+from hashlib import sha1, sha224
+
 
 class Solution:
     def getDict(self, s: str):
@@ -63,7 +65,7 @@ class Solution:
 
         if sum(res) > len(s):
             return ""
-        return s[res[1]:sum(res)]
+        return s[res[1] : sum(res)]
 
 
 if __name__ == "__main__":
