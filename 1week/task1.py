@@ -12,7 +12,7 @@ class Solution:
                 stack.append(i)
             elif ch == ")":
                 index = stack.pop()
-                s = s[:index + 1] + s[i - 1:index:-1] + s[i:]
+                s = s[: index + 1] + s[i - 1 : index : -1] + s[i:]
         s = s.replace("(", "").replace(")", "")
         return s
 
