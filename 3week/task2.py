@@ -1,35 +1,34 @@
 """
 leetcode.com/problem-list/array/
-url: https://leetcode.com/problems/3sum-closest
+url: https://leetcode.com/problems/3sum
 """
 
 
 class Solution:
-    def threeSumClosest(self, nums: list[int], target: int) -> int:
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
         nums.sort()
 
-        res = sum(nums)
+        res = []
         l_nums = len(nums)
-        closest = 10000
         for i in range(l_nums):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
+            target = -nums[i]
             j = i + 1
             k = l_nums - 1
             while j < k:
-                s = nums[i] + nums[j] + nums[k]
-                if abs(target - s) < closest:
-                    res = s
-                    closest = abs(target - s)
-                if s > target:
+                if nums[j] + nums[k] > target:
                     k -= 1
-                elif s < target:
+                elif nums[j] + nums[k] < target:
                     j += 1
                 else:
-                    return s
+                    res.append([nums[i], nums[j], nums[k]])
+                    j += 1
+                    while j < k and nums[j] == nums[j - 1]:
+                        j += 1
         return res
 
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.threeSumClosest([1, 1, 1, 0], -100))
+    print(s.threeSum([0, 0, 0, 0]))
