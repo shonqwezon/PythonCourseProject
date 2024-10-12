@@ -8,19 +8,17 @@ import bisect
 
 class Solution:
     def subarraySum(self, nums: list[int], k: int) -> int:
-        hashes = {0: [0]}
+        hashes = {}
         dp = [0]
         for i in range(len(nums)):
             dp.append(dp[-1] + nums[i])
-            if dp[-1] not in hashes:
-                hashes[dp[-1]] = []
-            hashes[dp[-1]].append(i + 1)
 
         c = 0
-        for i in range(len(dp) - 1, -1, -1):
+        for i in range(len(dp)):
             target = dp[i] - k
             if target in hashes:
-                c += bisect.bisect_right(hashes[target], i - 1)
+                c += hashes[target]
+            hashes[dp[i]] = hashes.get(dp[i], 0) + 1
         return c
 
 
